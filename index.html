@@ -134,10 +134,16 @@ a:focus-visible,button:focus-visible,summary:focus-visible{
    NAV
    ============================================================ */
 .topo{
-  position:sticky;top:0;z-index:50;background:var(--verde-fazenda);
-  border-bottom:1px solid var(--verde-linha);
+  position:sticky;top:0;z-index:50;background:var(--creme);
+  border-bottom:1px solid rgba(14,43,20,.16);
 }
-.topo .container{display:flex;align-items:center;justify-content:space-between;gap:var(--e3);min-height:74px}
+.marca-link{display:flex;align-items:center;min-height:44px;padding-block:.4rem;transition:opacity .18s ease}
+.marca-link:hover{opacity:.72}
+.marca-img{height:clamp(46px,5.8vw,64px);width:auto;display:block}
+.topo .menu a{color:var(--tinta-suave)}
+.topo .menu a:hover{color:var(--verde-fazenda);border-bottom-color:var(--tijolo)}
+.topo a:focus-visible{outline-color:var(--verde-fazenda)}
+.topo .container{display:flex;align-items:center;justify-content:space-between;gap:var(--e3);min-height:86px}
 .marca{display:flex;flex-direction:column;line-height:1;text-decoration:none;padding-block:.35rem;color:var(--dourado-claro);transition:color .18s ease}
 .marca:hover{color:var(--dourado)}
 .marca b{
@@ -384,8 +390,12 @@ blockquote cite{
 }
 .faq summary::-webkit-details-marker{display:none}
 .faq summary:hover{color:var(--tijolo)}
-.faq summary::after{content:"+";font-family:var(--texto);font-weight:400;color:var(--tijolo);font-size:1.4rem;line-height:1;flex:none}
-.faq details[open] summary::after{content:"–"}
+.faq summary::after{
+  content:"";flex:none;width:9px;height:9px;margin-top:.3em;
+  border-right:1.5px solid var(--tijolo);border-bottom:1.5px solid var(--tijolo);
+  transform:rotate(45deg);transition:transform .2s ease;
+}
+.faq details[open] summary::after{transform:rotate(-135deg);margin-top:.55em}
 .faq details p{padding-bottom:var(--e3);color:var(--tinta-suave);max-width:62ch;font-size:var(--t-peq);line-height:1.7}
 
 /* ---------- contato ---------- */
@@ -429,11 +439,11 @@ blockquote cite{
 </div>
 
 <!-- ==================== NAV ==================== -->
-<header class="topo no-verde">
+<header class="topo">
   <div class="container">
-    <a class="marca" href="#">
-      <b>Fazenda do Alemão</b>
-      <small>Receitas originais da Alemanha</small>
+    <a class="marca-link" href="#" aria-label="Fazenda do Alemão, ir para o topo">
+      <img class="marca-img" src="assets/logo-topo-faixa.png" width="925" height="249"
+           alt="Fazenda do Alemão · Receitas originais da Alemanha">
     </a>
     <nav class="menu" aria-label="Principal">
       <a href="#produtos">Produtos</a>

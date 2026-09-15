@@ -76,6 +76,18 @@ A foto do hero **não sangra** até a borda da viewport. Sangrava na primeira ve
 
 ---
 
+## 6b. A logo e o cabeçalho claro
+
+**O cabeçalho usa a logo original do Otto**, não um wordmark redesenhado. Decisão revista em 2026-09-14.
+
+A primeira versão trocava a faixa por "Fazenda do Alemão" em Vollkorn itálico, com o argumento de que a faixa 3D lustrosa é o elemento mais datado da marca. O argumento estético continua válido, mas perde para o político: rebranding está fora do escopo deste plano, e um preview que remove a marca do cliente desloca a reunião do site para a marca dele, que é onde a conversa trava. O site atual foi feito pela mesma pessoa que fez o do Restaurante Otto.
+
+**Consequência técnica:** a logo é verde sobre transparente. Sobre o verde da página ela vira um borrão e a linha "Receitas originais da Alemanha" some. Ela só funciona em fundo claro. Por isso o cabeçalho é **creme**, e o hero verde começa logo abaixo. Isso não é acidente de layout, é o que o asset exige.
+
+**No rodapé** a marca continua em forma tipográfica, porque o rodapé é verde escuro e não existe variante clara da logo. Quando houver, trocar.
+
+---
+
 ## 7. Elemento-assinatura: o enxaimel
 
 A estrutura de madeira do salão do restaurante (foto real do cliente) vira o sistema que organiza a página. Aparece em três formas, e em nenhuma outra:
@@ -137,7 +149,9 @@ Rodadas de `visual-qa.mjs` em 1920/1440/1024/768/390, resultado final:
 - Em endereço e metadado → **·** (ponto médio)
 - Nunca usar travessão no lugar de vírgula ou de dois-pontos
 
-Exceção: separadores decorativos e o sinal de menos do acordeão do FAQ são elementos visuais, não pontuação.
+Exceção: apenas separadores decorativos desenhados em CSS.
+
+**Nem o acordeão escapa.** O FAQ usava `+` e `–` como indicador, e o `–` aparecia na tela como traço. Foi trocado por um chevron desenhado com bordas CSS, sem nenhum glifo. Auditoria atual: **zero** travessão ou meia-risca no texto visível, incluindo atributos `alt` e regras `content:`.
 
 ---
 
