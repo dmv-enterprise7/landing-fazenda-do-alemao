@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fazenda do Alemão · Receitas originais da Alemanha, desde 1987</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Salsicharia e presuntaria artesanal feita na serra de Mendes desde 1987, pelas receitas alemãs originais. Entrega no Grande Rio, retirada na loja e atacado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   FAZENDA DO ALEMÃO — tokens
+   Direção: enraizado · preciso · caseiro-sem-ser-rústico
+   Assinatura: enxaimel (a estrutura de madeira vira o sistema
+   de molduras e filetes que organiza a página)
+   ============================================================ */
+:root{
+  /* cor — herdada do site atual e corrigida */
+  --verde-fazenda:#0E2B14;   /* verde da faixa do logo, mais profundo */
+  --verde-mata:#16351C;      /* superfície elevada sobre o verde */
+  --verde-linha:#2C5233;     /* filete do enxaimel sobre o verde */
+  --dourado:#C9A227;         /* dourado da tipografia do logo */
+  --dourado-claro:#E7CE7A;   /* dourado legível como texto no verde */
+  --creme:#F4EFE2;           /* fundo: cor de pão e de toalha */
+  --creme-fundo:#EAE2D0;     /* superfície recuada no creme */
+  --tinta:#1A1714;
+  --tinta-suave:#55504A;
+  --tijolo:#8C3B2A;          /* acento único — do tijolo da lojinha */
+
+  /* tipografia */
+  --display:"Vollkorn",Georgia,"Times New Roman",serif;
+  --texto:"Fira Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+
+  /* escala */
+  --t-mono:clamp(.68rem,.62rem + .2vw,.75rem);
+  --t-peq:clamp(.79rem,.76rem + .16vw,.85rem);
+  --t-base:clamp(.94rem,.9rem + .2vw,1rem);
+  --t-med:clamp(1.02rem,.95rem + .4vw,1.18rem);
+  --t-g:clamp(1.3rem,1.08rem + 1.1vw,1.75rem);
+  --t-gg:clamp(1.7rem,1.25rem + 2.1vw,2.7rem);
+  --t-ggg:clamp(2.2rem,1.4rem + 3.8vw,4rem);
+
+  /* espaço */
+  --e1:.375rem; --e2:.75rem; --e3:1.25rem; --e4:2rem;
+  --e5:3rem;    --e6:4.5rem; --e7:7rem;
+  --secao:clamp(3.25rem,2.5rem + 3.8vw,5.75rem);
+
+  /* forma — raio quase zero: enxaimel é marcenaria, não plástico */
+  --r1:2px; --r2:4px;
+  --filete:1px solid var(--verde-linha);
+  --container:1300px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+body{
+  margin:0;background:var(--creme);color:var(--tinta);
+  font-family:var(--texto);font-size:var(--t-base);font-weight:400;
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.08;margin:0;letter-spacing:-.015em}
+p{margin:0}
+
+.container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:clamp(1.25rem,4vw,2.5rem)}
+
+/* foco visível em tudo — requisito de entrega, não detalhe */
+a:focus-visible,button:focus-visible,summary:focus-visible{
+  outline:2px solid var(--dourado);outline-offset:3px;border-radius:var(--r1);
+}
+.no-verde a:focus-visible,.no-verde button:focus-visible,.no-verde summary:focus-visible{outline-color:var(--dourado-claro)}
+
+.pular{position:absolute;top:0;left:0;background:var(--verde-fazenda);color:var(--creme);padding:.75rem 1.25rem;z-index:100;clip-path:inset(50%);white-space:nowrap}
+.pular:focus{clip-path:none}
+
+/* ---------- olho: rótulo de seção ---------- */
+.olho{
+  font-family:var(--texto);font-size:var(--t-mono);font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--tijolo);
+  display:flex;align-items:center;gap:.6rem;margin-bottom:var(--e3);
+}
+.olho::before{content:"";width:1.5rem;height:1px;background:currentColor;flex:none}
+.no-verde .olho{color:var(--dourado)}
+
+/* ---------- ASSINATURA: enxaimel ----------
+   cantos de junta + travessa diagonal, como a estrutura
+   de madeira do salão do restaurante                       */
+.enx{position:relative}
+.enx::before,.enx::after{
+  content:"";position:absolute;width:34px;height:34px;pointer-events:none;
+  border-color:var(--dourado);border-style:solid;border-width:0;
+}
+.enx::before{top:0;left:0;border-top-width:2px;border-left-width:2px}
+.enx::after{bottom:0;right:0;border-bottom-width:2px;border-right-width:2px}
+
+.travessa{display:flex;align-items:center;gap:0;width:100%;color:var(--dourado)}
+.travessa::before,.travessa::after{content:"";height:1px;background:currentColor;flex:1;opacity:.55}
+.trelica{
+  background-color:var(--verde-fazenda);
+  background-image:
+    repeating-linear-gradient(45deg,rgba(201,162,39,.17) 0 1px,transparent 1px 46px),
+    repeating-linear-gradient(-45deg,rgba(201,162,39,.17) 0 1px,transparent 1px 46px);
+}
+.travessa i{
+  display:block;width:13px;height:13px;flex:none;margin-inline:.85rem;
+  border:1px solid currentColor;transform:rotate(45deg);opacity:.9;
+}
+
+/* ---------- botões ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-family:var(--texto);font-size:var(--t-peq);font-weight:600;
+  letter-spacing:.04em;text-transform:uppercase;text-decoration:none;
+  padding:.95rem 1.6rem;border:1px solid transparent;border-radius:var(--r1);
+  transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;
+  cursor:pointer;
+}
+.btn-1{background:var(--tijolo);color:#fff;border-color:var(--tijolo)}
+.btn-1:hover{background:#702f21;border-color:#702f21;transform:translateY(-1px)}
+.btn-2{background:transparent;color:var(--creme);border-color:var(--verde-linha)}
+.btn-2:hover{border-color:var(--dourado);color:var(--dourado-claro)}
+.btn-3{background:transparent;color:var(--verde-fazenda);border-color:rgba(14,43,20,.3)}
+.btn-3:hover{border-color:var(--verde-fazenda);background:rgba(14,43,20,.05)}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.topo{
+  position:sticky;top:0;z-index:50;background:var(--verde-fazenda);
+  border-bottom:1px solid var(--verde-linha);
+}
+.topo .container{display:flex;align-items:center;justify-content:space-between;gap:var(--e3);min-height:74px}
+.marca{display:flex;flex-direction:column;line-height:1;text-decoration:none;padding-block:.35rem;color:var(--dourado-claro);transition:color .18s ease}
+.marca:hover{color:var(--dourado)}
+.marca b{
+  font-family:var(--display);font-style:italic;font-weight:600;
+  font-size:1.16rem;color:inherit;letter-spacing:.005em;
+}
+.marca small{
+  font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(244,239,226,.6);margin-top:.4rem;font-weight:500;
+}
+.menu{display:flex;align-items:center;gap:var(--e4)}
+.menu a{
+  color:rgba(244,239,226,.82);text-decoration:none;font-size:var(--t-peq);
+  font-weight:400;padding-block:.4rem;border-bottom:1px solid transparent;
+  transition:color .18s ease,border-color .18s ease;
+}
+.menu a:hover{color:var(--dourado-claro);border-bottom-color:var(--dourado)}
+.topo .btn{padding:.7rem 1.15rem}
+@media (max-width:880px){.menu{display:none}}
+@media (max-width:560px){
+  .hero-acoes{display:grid;grid-template-columns:1fr}
+  .hero-acoes .btn{justify-content:center}
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{background:var(--verde-fazenda);color:var(--creme);position:relative;overflow:hidden}
+.hero .container{
+  display:grid;grid-template-columns:1fr minmax(0,1.1fr);gap:clamp(2rem,5vw,4rem);
+  align-items:center;padding-block:clamp(3rem,5vw,4.25rem);
+}
+.hero-sel{
+  display:inline-flex;align-items:center;gap:.6rem;font-size:var(--t-mono);
+  letter-spacing:.2em;text-transform:uppercase;color:var(--dourado);
+  font-weight:600;margin-bottom:var(--e3);
+}
+.hero-sel s{display:block;width:2rem;height:1px;background:currentColor;opacity:.6}
+.hero h1{font-size:var(--t-gg);color:var(--creme);text-wrap:balance;max-width:15ch}
+.hero h1 em{font-style:italic;color:var(--dourado-claro);font-weight:400}
+.hero-sub{
+  font-size:var(--t-med);color:rgba(244,239,226,.8);max-width:34ch;
+  margin-top:var(--e3);font-weight:300;line-height:1.5;
+}
+.hero-acoes{display:flex;flex-wrap:wrap;gap:var(--e2);margin-top:var(--e4)}
+.hero-fig{position:relative;margin:0}
+.hero-fig img{
+  width:100%;height:clamp(340px,36vw,470px);object-fit:cover;object-position:50% 44%;
+  filter:saturate(1.02) contrast(1.03);
+}
+.hero-fig::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  border-left:2px solid var(--dourado);
+}
+  .hero-cred{
+  position:absolute;left:0;bottom:1.75rem;z-index:1;background:var(--creme);color:var(--tinta);
+  padding:.8rem 1.1rem;max-width:16rem;border-left:3px solid var(--tijolo);
+}
+.hero-cred b{font-family:var(--display);font-size:1.05rem;display:block}
+.hero-cred span{font-size:var(--t-mono);color:var(--tinta-suave);letter-spacing:.04em}
+@media (max-width:860px){
+  .hero .container{grid-template-columns:1fr;gap:var(--e4)}
+  .hero .container{padding-top:var(--e3)}
+  .hero-fig{order:-1;margin-inline:calc(50% - 50vw)}
+  .hero-fig img{height:clamp(300px,74vw,340px)}
+  .hero-fig::after{border-left:0;background:none}
+  .hero-cred{position:static;margin:var(--e3) clamp(1.25rem,4vw,2.5rem) 0;max-width:none;background:transparent;color:var(--creme);border-left-color:var(--dourado)}
+  .hero-cred span{color:rgba(244,239,226,.7)}
+}
+
+/* revelação — o único momento orquestrado da página */
+@keyframes sobe{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero-sel,.hero h1,.hero-sub,.hero-acoes,.hero-fig{animation:sobe .7s cubic-bezier(.22,1,.36,1) both}
+.hero h1{animation-delay:.06s}
+.hero-sub{animation-delay:.12s}
+.hero-acoes{animation-delay:.18s}
+.hero-fig{animation-delay:.1s}
+
+/* ============================================================
+   FAIXA DE CREDENCIAIS
+   ============================================================ */
+.faixa{background:var(--verde-mata);border-top:1px solid var(--verde-linha);color:var(--creme)}
+.faixa .container{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  padding-block:var(--e5);gap:0;
+}
+.faixa div{padding:.25rem clamp(.5rem,2vw,1.5rem);text-align:center}
+.faixa div+div{border-left:1px solid var(--verde-linha)}
+.faixa b{
+  display:block;font-family:var(--display);font-size:var(--t-g);
+  color:var(--dourado-claro);font-weight:600;line-height:1;
+}
+.faixa span{
+  display:block;margin-top:.5rem;font-size:var(--t-mono);letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(244,239,226,.62);line-height:1.4;
+}
+@media (max-width:700px){
+  .faixa .container{grid-template-columns:repeat(2,1fr);gap:var(--e4) 0}
+  .faixa div:nth-child(odd){border-left:0}
+}
+
+/* ============================================================
+   PROVA
+   ============================================================ */
+.prova{background:var(--creme-fundo);border-block:1px solid rgba(14,43,20,.12)}
+.prova .container{
+  padding-block:var(--e4);display:flex;align-items:center;justify-content:center;
+  gap:var(--e3);text-align:center;flex-wrap:wrap;
+}
+.prova p{font-family:var(--display);font-size:var(--t-med);max-width:60ch;font-style:italic}
+.prova p b{font-style:normal;font-weight:600}
+
+/* ============================================================
+   SEÇÕES
+   ============================================================ */
+.secao{padding-block:var(--secao)}
+.secao-verde{background:var(--verde-fazenda);color:var(--creme)}
+.secao-verde h2{color:var(--creme)}
+.cabeca{max-width:58ch;margin-bottom:var(--e5)}
+.cabeca h2{font-size:var(--t-gg);text-wrap:balance}
+.cabeca h2 em{font-style:italic;font-weight:400;color:var(--tijolo)}
+.secao-verde .cabeca h2 em{color:var(--dourado-claro)}
+.cabeca p{margin-top:var(--e3);color:var(--tinta-suave);font-size:var(--t-med);font-weight:300;line-height:1.55}
+.secao-verde .cabeca p{color:rgba(244,239,226,.72)}
+
+/* ---------- catálogo ---------- */
+.familias{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,2.5rem)}
+@media (max-width:820px){.familias{grid-template-columns:1fr}}
+.fam{border:1px solid rgba(14,43,20,.16);background:#fff;display:flex;flex-direction:column}
+.fam-img{aspect-ratio:16/10;object-fit:cover;width:100%}
+.fam-vazia{
+  aspect-ratio:16/10;color:var(--dourado-claro);
+  display:grid;place-content:center;text-align:center;padding:var(--e3);gap:.5rem;
+}
+.fam-vazia b,.retrato-vazio b,.mapa-quadro b{background:var(--verde-fazenda);padding:.35rem .9rem}
+.fam-vazia span,.retrato-vazio span,.mapa-quadro span{background:var(--verde-fazenda);padding:.3rem .7rem;display:inline-block}
+.fam-vazia b{font-family:var(--display);font-style:italic;font-size:var(--t-g);font-weight:400}
+.fam-vazia span{font-size:var(--t-mono);letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,226,.72)}
+.fam-corpo{padding:clamp(1.35rem,2.4vw,1.9rem);flex:1;display:flex;flex-direction:column}
+.fam h3{font-size:var(--t-g);margin-bottom:.5rem}
+.fam-corpo>p{color:var(--tinta-suave);font-size:var(--t-peq)}
+.itens{list-style:none;margin:var(--e3) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
+.itens li{
+  font-size:var(--t-peq);padding:.35rem .7rem;background:var(--creme);
+  border:1px solid rgba(14,43,20,.12);color:var(--tinta);
+}
+.itens li i{font-style:italic;font-family:var(--display);font-weight:600}
+.fam-nota{margin-top:auto;padding-top:var(--e3);border-top:1px dashed rgba(14,43,20,.2);font-size:var(--t-peq);color:var(--tinta-suave)}
+
+/* ---------- história / timeline ---------- */
+.hist{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(2rem,5vw,4rem);align-items:stretch}
+@media (max-width:860px){.hist{grid-template-columns:1fr}}
+.retrato{position:relative;margin:0}
+@media (min-width:861px){.retrato{position:sticky;top:110px;align-self:start}}
+@media (max-width:860px){.retrato-vazio{aspect-ratio:4/5;min-height:0}}
+.retrato-vazio{
+  height:100%;min-height:26rem;border:1px solid var(--verde-linha);
+  display:grid;place-content:center;text-align:center;gap:.75rem;padding:var(--e4);
+}
+.retrato-vazio b{font-family:var(--display);font-style:italic;font-size:var(--t-med);color:var(--dourado-claro);font-weight:400}
+.retrato-vazio span{font-size:var(--t-mono);letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,226,.72);line-height:1.6}
+.linha{list-style:none;margin:0;padding:0}
+.linha li{
+  display:grid;grid-template-columns:5.5rem 1fr;gap:var(--e3);
+  padding-block:var(--e3);border-top:1px solid var(--verde-linha);
+}
+.linha li:last-child{border-bottom:1px solid var(--verde-linha)}
+.linha time{
+  font-family:var(--display);font-size:var(--t-med);color:var(--dourado);
+  font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums;
+}
+.linha h3{font-size:var(--t-base);color:var(--creme);font-family:var(--texto);font-weight:600;letter-spacing:0}
+.linha p{margin-top:.35rem;color:rgba(244,239,226,.68);font-size:var(--t-peq);font-weight:300;line-height:1.6}
+.linha li:last-child time{color:var(--dourado-claro)}
+
+/* ---------- método / citação ---------- */
+.metodo .travessa{grid-column:1/-1;margin-bottom:var(--e5)}
+.metodo .container{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media (max-width:820px){.metodo .container{grid-template-columns:1fr}}
+blockquote{
+  margin:0;font-family:var(--display);font-size:var(--t-g);line-height:1.35;
+  font-style:italic;text-wrap:balance;position:relative;padding-left:var(--e4);
+  border-left:2px solid var(--dourado);
+}
+blockquote cite{
+  display:block;margin-top:var(--e3);font-family:var(--texto);font-style:normal;
+  font-size:var(--t-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave);
+}
+.metodo-lista{list-style:none;margin:0;padding:0;display:grid;gap:var(--e3)}
+.metodo-lista li{display:grid;grid-template-columns:auto 1fr;gap:var(--e3);align-items:start}
+.metodo-lista b{
+  font-family:var(--display);font-size:var(--t-med);color:var(--tijolo);
+  font-variant-numeric:tabular-nums;line-height:1.3;
+}
+.metodo-lista strong{display:block;font-weight:600;font-size:var(--t-base)}
+.metodo-lista span{color:var(--tinta-suave);font-size:var(--t-peq)}
+
+/* ---------- lugares ---------- */
+.lugares{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,2.5rem)}
+@media (max-width:820px){.lugares{grid-template-columns:1fr}}
+.lugar{position:relative;padding:12px;background:var(--creme-fundo)}
+.lugar img{aspect-ratio:5/4;object-fit:cover;width:100%}
+.lugar-txt{padding:var(--e3) var(--e2) var(--e1)}
+.lugar h3{font-size:var(--t-med);margin-bottom:.4rem}
+.lugar p{font-size:var(--t-peq);color:var(--tinta-suave)}
+.lugar .aviso{
+  display:inline-block;margin-top:var(--e2);font-size:var(--t-mono);
+  letter-spacing:.1em;text-transform:uppercase;color:var(--tijolo);
+  border:1px solid currentColor;padding:.25rem .55rem;
+}
+
+/* ---------- três formas de comprar ---------- */
+.modos{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--verde-linha);border:1px solid var(--verde-linha)}
+@media (max-width:820px){.modos{grid-template-columns:1fr}}
+.modo{background:var(--verde-fazenda);padding:clamp(1.5rem,2.4vw,2.1rem);display:flex;flex-direction:column;gap:var(--e2)}
+.modo-n{font-family:var(--display);font-size:var(--t-med);color:var(--dourado);font-weight:600;font-variant-numeric:tabular-nums}
+.modo h3{font-size:var(--t-med);color:var(--creme)}
+.modo p{color:rgba(244,239,226,.7);font-size:var(--t-peq);font-weight:300;flex:1}
+.modo dl{margin:var(--e2) 0 0;display:grid;gap:.4rem;font-size:var(--t-peq)}
+.modo dl div{display:flex;justify-content:space-between;gap:var(--e2);padding-block:.35rem;border-top:1px solid rgba(44,82,51,.6)}
+.modo dt{color:rgba(244,239,226,.55)}
+.modo dd{margin:0;color:var(--dourado-claro);text-align:right}
+
+/* cluster de confiança */
+.confianca{
+  margin-top:var(--e4);display:grid;grid-template-columns:repeat(3,1fr);
+  gap:var(--e3);padding-top:var(--e4);border-top:1px solid var(--verde-linha);
+}
+@media (max-width:700px){.confianca{grid-template-columns:1fr;gap:var(--e2)}}
+.confianca>div{display:grid;grid-template-columns:auto 1fr;gap:var(--e2);align-items:start}
+.confianca svg{width:20px;height:20px;color:var(--dourado);flex:none;margin-top:2px}
+.confianca strong{display:block;font-size:var(--t-peq);font-weight:600;color:var(--creme)}
+.confianca span{font-size:var(--t-mono);color:rgba(244,239,226,.6);line-height:1.55;letter-spacing:.01em}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:44rem}
+.faq details{border-top:1px solid rgba(14,43,20,.18)}
+.faq details:last-of-type{border-bottom:1px solid rgba(14,43,20,.18)}
+.faq summary{
+  cursor:pointer;list-style:none;padding-block:var(--e3);
+  font-family:var(--display);font-size:var(--t-med);font-weight:600;
+  display:flex;align-items:baseline;justify-content:space-between;gap:var(--e3);
+  transition:color .18s ease;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--tijolo)}
+.faq summary::after{content:"+";font-family:var(--texto);font-weight:400;color:var(--tijolo);font-size:1.4rem;line-height:1;flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding-bottom:var(--e3);color:var(--tinta-suave);max-width:62ch;font-size:var(--t-peq);line-height:1.7}
+
+/* ---------- contato ---------- */
+.contato .container{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media (max-width:820px){.contato .container{grid-template-columns:1fr}}
+.endereco{list-style:none;margin:var(--e4) 0 0;padding:0;display:grid;gap:var(--e3)}
+.endereco li{display:grid;gap:.3rem;padding-bottom:var(--e3);border-bottom:1px solid var(--verde-linha)}
+.endereco dt,.endereco b{font-size:var(--t-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dourado);font-weight:600}
+.endereco span{color:rgba(244,239,226,.85);font-size:var(--t-base)}
+.endereco a{display:inline-block;padding-block:.6rem;color:var(--creme);text-decoration:none;border-bottom:1px solid var(--verde-linha);transition:border-color .18s ease}
+.endereco a:hover{border-bottom-color:var(--dourado)}
+.mapa{position:relative;padding:12px}
+.mapa-quadro{
+  aspect-ratio:4/3;border:1px solid var(--verde-linha);
+  display:grid;place-content:center;text-align:center;gap:.6rem;padding:var(--e4);
+}
+.mapa-quadro b{font-family:var(--display);font-style:italic;color:var(--dourado-claro);font-size:var(--t-med);font-weight:400}
+.mapa-quadro span{font-size:var(--t-mono);letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,226,.72);line-height:1.7}
+
+/* ---------- rodapé ---------- */
+.rodape{background:var(--verde-mata);color:rgba(244,239,226,.6);border-top:1px solid var(--verde-linha)}
+.rodape .container{padding-block:var(--e4);display:flex;justify-content:space-between;gap:var(--e3);flex-wrap:wrap;align-items:flex-end}
+.rodape .marca b{font-size:1.1rem}
+.rodape small{font-size:var(--t-mono);line-height:1.8;letter-spacing:.02em}
+
+/* nota de preview — identifica o documento como mockup */
+.preview-nota{
+  background:var(--tinta);color:rgba(244,239,226,.75);
+  font-size:var(--t-mono);letter-spacing:.08em;text-align:center;
+  padding:.7rem 1.25rem;line-height:1.6;
+}
+.preview-nota b{color:var(--dourado-claro);letter-spacing:.14em;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<div class="preview-nota">
+  <b>Preview de design</b> · Demonstração produzida pela DMV Enterprise para a Fazenda do Alemão · Não é o site publicado
+</div>
+
+<!-- ==================== NAV ==================== -->
+<header class="topo no-verde">
+  <div class="container">
+    <a class="marca" href="#">
+      <b>Fazenda do Alemão</b>
+      <small>Receitas originais da Alemanha</small>
+    </a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#produtos">Produtos</a>
+      <a href="#historia">A história</a>
+      <a href="#fazenda">A fazenda</a>
+      <a href="#comprar">Como comprar</a>
+      <a href="#contato">Como chegar</a>
+    </nav>
+    <a class="btn btn-1" href="#comprar">Comprar</a>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ==================== HERO ==================== -->
+<section class="hero no-verde">
+  <div class="container">
+    <div class="hero-txt">
+      <p class="hero-sel"><s></s> Mendes · Rio de Janeiro · desde 1987</p>
+      <h1>Receita alemã de verdade.<br><em>Feita na serra,</em> entregue na sua mesa.</h1>
+      <p class="hero-sub">Salsicharia e presuntaria artesanal pelas receitas que Fred Bergman trouxe da Alemanha. As mesmas que abastecem os restaurantes alemães do Rio há quase quarenta anos.</p>
+      <div class="hero-acoes">
+        <a class="btn btn-1" href="#produtos">Ver os produtos</a>
+        <a class="btn btn-2" href="#historia">A história da fazenda</a>
+      </div>
+    </div>
+    <figure class="hero-fig">
+      <img src="assets/produtos-fazenda-do-alemao.jpg" alt="Travessa de frios da Fazenda do Alemão com presunto cru defumado, terrinas, patês, salames e bandeirinha alemã">
+      <figcaption class="hero-cred">
+        <b>Aufschnitt da casa</b>
+        <span>Frios variados · corte na hora</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ==================== CREDENCIAIS ==================== -->
+<section class="faixa no-verde" aria-label="A fazenda em números">
+  <div class="container">
+    <div><b>1987</b><span>Ano de fundação</span></div>
+    <div><b>38</b><span>Anos de receita alemã</span></div>
+    <div><b>23</b><span>Produtos no catálogo</span></div>
+    <div><b>Sexta</b><span>Rota de entrega semanal</span></div>
+  </div>
+</section>
+
+<!-- ==================== PROVA ==================== -->
+<section class="prova" aria-label="Procedência">
+  <div class="container">
+    <p>Se você já comeu <b>Eisbein, Kassler ou Aufschnitt</b> em um restaurante alemão do Rio, é bem provável que tenha comido o nosso.</p>
+  </div>
+</section>
+
+<!-- ==================== PRODUTOS ==================== -->
+<section class="secao" id="produtos">
+  <div class="container">
+    <div class="cabeca">
+      <p class="olho">O que fazemos</p>
+      <h2>Duas famílias, <em>uma só receita:</em> a original.</h2>
+      <p>A natureza da região serrana de Mendes é a pátria das nossas especialidades. Matéria-prima selecionada, produção em lote pequeno e nenhum atalho. Do mesmo jeito desde 1987.</p>
+    </div>
+
+    <div class="familias">
+      <article class="fam">
+        <img class="fam-img" src="assets/produtos.jpg" alt="Linguiças brancas, salsichas e peças defumadas embaladas a vácuo sobre mesa de madeira">
+        <div class="fam-corpo">
+          <h3>Salsicharia e presuntaria</h3>
+          <p>O núcleo da casa. Embutidos com apenas a quantidade mínima de toucinho, o suficiente para a suculência e nunca mais que isso.</p>
+          <ul class="itens">
+            <li><i>Weisswurst</i></li>
+            <li><i>Bockwurst</i></li>
+            <li><i>Bratwurst</i></li>
+            <li><i>Frankfurter</i></li>
+            <li>Presunto cru defumado <i>Landrauch</i></li>
+            <li>Frios tipo <i>Aufschnitt</i></li>
+            <li>Terrinas</li>
+            <li>Patês de fígado e de carne</li>
+            <li>Joelho de porco salmourado</li>
+            <li>Joelho de porco defumado</li>
+          </ul>
+          <p class="fam-nota">Peças artesanais têm peso variável. Cada produto é vendido com peso de referência e a tolerância declarada antes da compra.</p>
+        </div>
+      </article>
+
+      <article class="fam">
+        <div class="fam-vazia trelica">
+          <b>Conservas, pães e doces</b>
+          <span>Fotografia a produzir</span>
+        </div>
+        <div class="fam-corpo">
+          <h3>O que vai junto na mesa</h3>
+          <p>A parte que completa o prato alemão e que quase ninguém mais faz no Brasil. Feita na mesma cozinha, no mesmo dia.</p>
+          <ul class="itens">
+            <li>Chucrute de vinho</li>
+            <li>Mostarda picante</li>
+            <li>Raiz-forte</li>
+            <li>Pepinos em conserva</li>
+            <li>Pão de centeio</li>
+            <li>Pão de gergelim</li>
+            <li>Pão de mel</li>
+            <li><i>Apfelstrudel</i></li>
+            <li>Tortas</li>
+            <li>Geleias</li>
+            <li>Licores</li>
+          </ul>
+          <p class="fam-nota">Pães e doces saem por encomenda, acompanhando a rota da semana.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HISTÓRIA ==================== -->
+<section class="secao secao-verde no-verde" id="historia">
+  <div class="container">
+    <div class="cabeca">
+      <p class="olho">A história</p>
+      <h2>O cliente <em>que virou dono.</em></h2>
+      <p>Tem gente que compra uma marca. Otto Grunewald comprou a fazenda de onde vinha o produto que ele já servia havia vinte anos.</p>
+    </div>
+
+    <div class="hist">
+      <figure class="retrato enx">
+        <div class="retrato-vazio trelica">
+          <b>Otto Grunewald</b>
+          <span>Retrato na fazenda<br>fotografia a produzir</span>
+        </div>
+      </figure>
+
+      <ol class="linha">
+        <li>
+          <time datetime="1987">1987</time>
+          <div>
+            <h3>Fred Bergman funda a fazenda</h3>
+            <p>Um alemão traz para a serra de Mendes as receitas de salsicharia e presuntaria da terra dele. Nada é adaptado ao paladar brasileiro. É essa a proposta.</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2004-07">2004</time>
+          <div>
+            <h3>Otto abre o restaurante e vira cliente</h3>
+            <p>Julho de 2004: nasce o Restaurante Otto, cozinha teuto-brasileira no Rio. Desde o dia da inauguração, os produtos da Fazenda do Alemão estão no cardápio.</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2022">2022</time>
+          <div>
+            <h3>O cliente compra a fábrica</h3>
+            <p>Depois de dezoito anos servindo o produto todos os dias, Otto compra a fábrica para garantir que a receita não mudasse.</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2025">2025</time>
+          <div>
+            <h3>E depois a fazenda inteira</h3>
+            <p>A propriedade em Mendes passa a ser dele. A produção continua onde sempre esteve, com as mesmas receitas. Agora com um dono que foi freguês antes de ser proprietário.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MÉTODO ==================== -->
+<section class="secao metodo">
+  <div class="container">
+    <p class="travessa" aria-hidden="true"><i></i></p>
+    <div>
+      <p class="olho">O método</p>
+      <blockquote>
+        “Somente a quantidade mínima de toucinho necessária para manter a suculência, a consistência e o paladar.”
+        <cite>A regra da casa desde 1987</cite>
+      </blockquote>
+    </div>
+    <ul class="metodo-lista">
+      <li>
+        <b>01</b>
+        <div>
+          <strong>Matéria-prima selecionada</strong>
+          <span>Carne escolhida peça a peça. Lote pequeno, porque lote grande obriga a abrir mão de alguma coisa.</span>
+        </div>
+      </li>
+      <li>
+        <b>02</b>
+        <div>
+          <strong>Receita original, sem adaptação</strong>
+          <span>As proporções que vieram da Alemanha com Fred Bergman. Nenhuma foi ajustada em 38 anos.</span>
+        </div>
+      </li>
+      <li>
+        <b>03</b>
+        <div>
+          <strong>Defumação e cura no tempo certo</strong>
+          <span>O que precisa de dias fica dias. É por isso que a produção da semana define a rota da semana.</span>
+        </div>
+      </li>
+      <li>
+        <b>04</b>
+        <div>
+          <strong>Da fazenda direto para a mesa</strong>
+          <span>Sem distribuidor no meio, sem semanas de prateleira. Da serra de Mendes para o Grande Rio.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==================== LUGARES ==================== -->
+<section class="secao" id="fazenda" style="background:var(--creme-fundo)">
+  <div class="container">
+    <div class="cabeca">
+      <p class="olho">Os lugares</p>
+      <h2>Uma fábrica que também é <em>um lugar para visitar.</em></h2>
+      <p>Convidamos você a desfrutar da nossa natureza e passar algumas horas de tranquilidade, longe das preocupações da cidade grande. Venha nos visitar.</p>
+    </div>
+
+    <div class="lugares">
+      <figure class="lugar enx">
+        <img src="assets/restaurante-tipico-alemao-mendes-1.jpg" alt="Salão do restaurante da Fazenda do Alemão, com estrutura de madeira em enxaimel, mesas com toalha xadrez e decoração alemã">
+        <figcaption class="lugar-txt">
+          <h3>O restaurante, em Mendes</h3>
+          <p>Salão em enxaimel, toalha xadrez e a cozinha alemã servida no lugar onde ela é produzida.</p>
+          <span class="aviso">Temporariamente fechado</span>
+        </figcaption>
+      </figure>
+
+      <figure class="lugar enx">
+        <img src="assets/lojinha.jpg" alt="Fachada da lojinha da Fazenda do Alemão, com pintura folclórica de flores azuis e prateleiras de conservas">
+        <figcaption class="lugar-txt">
+          <h3>A lojinha da fábrica</h3>
+          <p>A loja onde o produto sai direto da produção, com o catálogo completo e as conservas que não viajam.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== COMO COMPRAR ==================== -->
+<section class="secao secao-verde no-verde" id="comprar">
+  <div class="container">
+    <div class="cabeca">
+      <p class="olho">Como comprar</p>
+      <h2>Três formas de levar <em>o produto para casa.</em></h2>
+      <p>A produção é semanal e a rota também. Escolha o caminho que combina com você. O preço do produto é o mesmo nos três.</p>
+    </div>
+
+    <div class="modos">
+      <article class="modo">
+        <span class="modo-n">01</span>
+        <h3>Entrega no Grande Rio</h3>
+        <p>Você monta o pedido durante a semana e ele entra na rota de sexta, refrigerado, direto da produção.</p>
+        <dl>
+          <div><dt>Rota</dt><dd>Toda sexta-feira</dd></div>
+          <div><dt>Frete grátis</dt><dd>Acima do valor mínimo</dd></div>
+          <div><dt>Prazo de corte</dt><dd>Quinta, até o horário limite</dd></div>
+        </dl>
+      </article>
+
+      <article class="modo">
+        <span class="modo-n">02</span>
+        <h3>Retirada na loja</h3>
+        <p>Pedido feito aqui, retirado na loja da fábrica anexa ao Restaurante Otto, no Rio. Sem custo de entrega.</p>
+        <dl>
+          <div><dt>Custo de entrega</dt><dd>Nenhum</dd></div>
+          <div><dt>Agendamento</dt><dd>Data e horário à sua escolha</dd></div>
+          <div><dt>Aviso</dt><dd>Quando estiver separado</dd></div>
+        </dl>
+      </article>
+
+      <article class="modo">
+        <span class="modo-n">03</span>
+        <h3>Atacado</h3>
+        <p>Para bar, restaurante, mercado e empório. Tabela própria, pedido mínimo e repetição do último pedido em um clique.</p>
+        <dl>
+          <div><dt>Acesso</dt><dd>Cadastro aprovado</dd></div>
+          <div><dt>Tabela</dt><dd>Preço de atacado</dd></div>
+          <div><dt>Entrega</dt><dd>Agrupada por rota</dd></div>
+        </dl>
+      </article>
+    </div>
+
+    <div class="confianca">
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.3 3.1 8.3 7.5 9.5 4.4-1.2 7.5-5.2 7.5-9.5V6L12 3Z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>
+        <div>
+          <strong>Pagamento processado por provedor certificado</strong>
+          <span>Pix e cartão de crédito. Os dados do seu cartão não ficam guardados aqui em nenhum momento.</span>
+        </div>
+      </div>
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg>
+        <div>
+          <strong>Refrigerado do início ao fim</strong>
+          <span>Produto artesanal não viaja em frete genérico. Sai da câmara fria e entra na nossa rota.</span>
+        </div>
+      </div>
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v18M7 7.5h7.5a2.75 2.75 0 0 1 0 5.5H7"/><path d="M4.5 8h2M4.5 12.5h2M4.5 17h6"/></svg>
+        <div>
+          <strong>Peso de referência declarado</strong>
+          <span>Cada peça artesanal sai com peso um pouco diferente. Você vê o peso e a tolerância antes de comprar.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section class="secao">
+  <div class="container">
+    <div class="cabeca">
+      <p class="olho">Dúvidas</p>
+      <h2>O que costumam <em>perguntar antes.</em></h2>
+    </div>
+
+    <div class="faq">
+      <details open>
+        <summary>Por que o peso da peça varia?</summary>
+        <p>Porque ela é feita à mão, uma a uma. Um joelho de porco nunca sai exatamente igual ao outro. Por isso cada produto é anunciado com um peso de referência e uma tolerância. Você sabe a faixa antes de comprar, e nós cobramos dentro dela.</p>
+      </details>
+      <details>
+        <summary>Como o produto refrigerado chega até mim?</summary>
+        <p>Pela nossa própria rota, a mesma que abastece os restaurantes há anos. Não usamos transportadora genérica: o produto sai da câmara fria e entra no veículo da entrega semanal. É por isso que a entrega tem dia certo em vez de prazo estimado.</p>
+      </details>
+      <details>
+        <summary>Qual é o prazo para entrar na entrega da semana?</summary>
+        <p>Pedidos feitos até o horário limite de quinta-feira entram na rota de sexta. Depois disso, o pedido passa automaticamente para a entrega da semana seguinte, sem ninguém precisar avisar.</p>
+      </details>
+      <details>
+        <summary>Vocês atendem fora do Grande Rio?</summary>
+        <p>A rota própria cobre o Grande Rio e a região de Mendes. Fora dessa área, fale com a gente pelo WhatsApp: dependendo do volume e do produto, conseguimos combinar uma alternativa.</p>
+      </details>
+      <details>
+        <summary>Sou restaurante ou mercado. Como compro no atacado?</summary>
+        <p>Pelo cadastro de atacado. Depois da aprovação, você passa a ver a tabela de preço específica, o pedido mínimo e a opção de repetir o último pedido em um clique. Os pedidos são agrupados pela rota da semana.</p>
+      </details>
+      <details>
+        <summary>É seguro pagar aqui?</summary>
+        <p>O pagamento é processado direto por provedor certificado, com Pix e cartão de crédito. Os dados do cartão não passam nem ficam armazenados nos nossos servidores.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTATO ==================== -->
+<section class="secao secao-verde no-verde contato" id="contato">
+  <div class="container">
+    <div>
+      <p class="olho">Como chegar</p>
+      <h2>Na serra, <em>a uma hora e meia do Rio.</em></h2>
+      <ul class="endereco">
+        <li>
+          <b>Restaurante e fábrica</b>
+          <span>Rua Saputizeiro, s/nº · Jabuticabeira<br>Cinco Lagos · Mendes · Rio de Janeiro</span>
+        </li>
+        <li>
+          <b>Informações e pedidos</b>
+          <span><a href="https://wa.me/5524998167192">(24) 99816-7192</a> · WhatsApp</span>
+        </li>
+        <li>
+          <b>Loja no Rio</b>
+          <span>Anexa ao Restaurante Otto · retirada de pedidos</span>
+        </li>
+      </ul>
+      <div class="hero-acoes">
+        <a class="btn btn-1" href="https://wa.me/5524998167192">Falar no WhatsApp</a>
+      </div>
+    </div>
+
+    <figure class="mapa enx">
+      <div class="mapa-quadro trelica">
+        <b>Cinco Lagos · Mendes · RJ</b>
+        <span>Mapa interativo<br>a integrar</span>
+      </div>
+    </figure>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== RODAPÉ ==================== -->
+<footer class="rodape no-verde">
+  <div class="container">
+    <a class="marca" href="#">
+      <b>Fazenda do Alemão</b>
+      <small>Receitas originais da Alemanha</small>
+    </a>
+    <small>
+      Rua Saputizeiro, s/nº · Cinco Lagos · Mendes · RJ<br>
+      (24) 99816-7192 · Empresa familiar desde 1987
+    </small>
+  </div>
+</footer>
+
+<div class="preview-nota">
+  <b>Preview de design</b> · DMV Enterprise · Textos e imagens provisórios, retirados do site atual · Setembro de 2026
+</div>
+
+</body>
+</html>
